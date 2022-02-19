@@ -3,7 +3,7 @@
         <div class="white-bg">
             <h4>{{onerooms[click].title}}</h4>
             <img :src="onerooms[click].image" class = "img">
-            <!-- <button @click="popup = false">닫기</button> -->
+            <button @click = "$emit('closeModal')">닫기</button>
         </div>
     </div>
 </template>

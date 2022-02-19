@@ -1,6 +1,6 @@
 <template>
 
-  <ModalComponent :popup = "popup" :onerooms = "onerooms" :click = "click"/>
+  <ModalComponent :popup = "popup" :onerooms = "onerooms" :click = "click" @closeModal="popup = false"/>
 
   <div class="menu">
       <a v-for = "baner in baners" :key = "baner">{{ baner }}</a>
@@ -8,7 +8,7 @@
 
   <DiscountComponent/>
 
-  <CardComponent :onerooms="onerooms" :popup="popup"/>
+  <CardComponent :onerooms="onerooms" :popup="popup" @openModal="popup = true; click=$event"/>
 
 </template>
 
