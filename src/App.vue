@@ -1,6 +1,13 @@
 <template>
 
-  <ModalComponent :popup = "popup" :onerooms = "onerooms" :click = "click" @closeModal="popup = false"/>
+  <transition name="fade">
+    <ModalComponent 
+      :popup = "popup" 
+      :onerooms = "onerooms" 
+      :click = "click" 
+      @closeModal="popup = false" />
+  </transition>
+
 
   <div class="menu">
       <a v-for = "baner in baners" :key = "baner">{{ baner }}</a>
@@ -59,6 +66,16 @@ export default {
 
 .img {
   width: 40%;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  opacity: 1;
 }
 
 </style>

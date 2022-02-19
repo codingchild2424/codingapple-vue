@@ -3,9 +3,11 @@
         <div class="white-bg">
             <h4>{{onerooms[click].title}}</h4>
             <img :src="onerooms[click].image" class = "img">
+            <input v-model="month">
             <button @click = "$emit('closeModal')">닫기</button>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -15,6 +17,19 @@ export default {
         popup: Boolean,
         onerooms: Array,
         click: Number,
+    },
+    data(){
+        return {
+            month: 0
+        }
+    },
+    watch : {
+        month(a){
+            if (isNaN(a) == true) {
+                alert("문자입력하지마라");
+                this.month = 1;
+            }
+        }
     }
 }
 </script>
