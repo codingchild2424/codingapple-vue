@@ -1,6 +1,7 @@
 <template>
 
-  <transition name="fade">
+  <!-- trainsition 사이에 component를 넣으면, 화면 효과를 넣을 수 있음 -->
+  <transition name="fade"> 
     <ModalComponent 
       :popup = "popup" 
       :onerooms = "onerooms" 
@@ -14,6 +15,8 @@
   </div>
 
   <DiscountComponent/>
+
+  <p>지금 결제하면 {{amount}}% 할인</p>
 
   <button @click="priceSort()">
     가격순 정렬
@@ -46,7 +49,8 @@ export default {
       onerooms : data,
       original_onerooms : [...data], //사본을 따로 만드는 문법
       popup: false,
-      click: 0
+      click: 0,
+      amount: 30,
     }
   },
   components: {
@@ -62,6 +66,16 @@ export default {
     },
     sortBack(){
       this.onerooms = [...this.original_onerooms]; //array는 그냥 등호를 쓰면 값을 공유하게 되므로, [...] 문법을 사용하면 됨
+    },
+    mounted(){
+      setInterval(() => {
+        this.amount--;
+      }, 1000);
+    },
+    beforeUpdata(){
+      if (this.month == 2){
+        alert('2개월은 너무 적음.. 안팝니다.')
+      }
     }
   }
 }
