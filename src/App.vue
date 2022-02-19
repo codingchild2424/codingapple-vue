@@ -9,8 +9,11 @@
   </div>
 
   <div class="menu">
-    <a v-for = "baner in baners" :key = "baner">{{ baner }}</a>
+      <a v-for = "baner in baners" :key = "baner">{{ baner }}</a>
   </div>
+
+  <DiscountComponent/>
+
   <div>
     <div v-for = "(oneroom, i) in onerooms" :key="(oneroom, i)">
       <h1 @click = "popup = true; click = i">{{oneroom.title}}</h1>
@@ -22,7 +25,8 @@
 </template>
 
 <script>
-import data from './assets/oneroom.js'
+import data from './assets/oneroom.js';
+import DiscountComponent from './components/DiscountComponent.vue';
 
 export default {
   name: 'App',
@@ -33,6 +37,9 @@ export default {
       popup: false,
       click: 0
     }
+  },
+  components: {
+      DiscountComponent: DiscountComponent,
   }
 }
 </script>
@@ -73,5 +80,7 @@ export default {
 .img {
   width: 40%;
 }
+
+
 
 </style>
